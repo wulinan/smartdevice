@@ -31,6 +31,13 @@
     -->
     DESCRIPTION
   </sql>
+  
+  <select id="listAppInfo" resultType="java.util.HashMap">
+  	select ID, APPNAME, PUBLISHER
+  	from appinfo order by ID
+  </select>
+  
+  
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     <!--
       WARNING - @mbggenerated
@@ -62,6 +69,7 @@
       #{pubTime,jdbcType=TIMESTAMP}, #{picture,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
       #{deviceType,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR})
   </insert>
+  
   
   <insert id="insertSelective" parameterType="com.smartdevice.model.AppInfo" >
     <!--

@@ -1,6 +1,10 @@
 package com.smartdevice.controller;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -46,8 +50,21 @@ public class AppInfoController {
 	@ResponseBody
 	@RequestMapping("list_appinfo")
 	public String listAppInfo(){
+		List<Map<String, Object>> appList = appInfoService.listAppInfo();
+		int size = appList.size();
+		log.info("list size is : " +size);
 		
+		for(int i = 0; i < size; i ++){
+			Map<String, Object> map = appList.get(i);
+			Collection con = map.values();
+			Iterator it = con.iterator();
+			while(it.hasNext()){
+				AppInfo app = (AppInfo)it.next();
+				log.info(app.getId());
+			}
+		}
 		
+		log.info(size);
 		return "success";
 	}
 	

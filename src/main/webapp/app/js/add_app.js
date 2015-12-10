@@ -10,7 +10,7 @@ $(document).ready(
 					
 					$.ajax({
 					
-						url : '/app/add',
+						url : '/app/list_appinfo',
 						data: {
 							appName : js_appName
 						},
